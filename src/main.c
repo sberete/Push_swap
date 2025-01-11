@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:09:09 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/10 18:03:41 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/11 23:00:18 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_stack(t_node *stack)
+{
+	while (stack)
+	{
+		printf("%d -> ", stack->value);
+		stack = stack->next;
+	}
+	printf("NULL\n");
+}
 
 int	main(int argc, char **argv)
 {

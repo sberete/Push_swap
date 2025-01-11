@@ -31,29 +31,18 @@ void	push_back(t_node **stack, int nbr)
 	current->next = node;
 }
 
-void	print_stack(t_node *stack)
-{
-	while (stack)
-	{
-		printf("%d -> ", stack->value);
-		stack = stack->next;
-	}
-	printf("NULL\n");
-}
-
-/*
-int	parse_arg(t_node **stack_a, char **argv, int argc)
+int	parse(t_node **stack_a, char **argv, int argc)
 {
 	char	**split_result;
 	int		i;
 	int		nbr;
 
-	i = (argc == 2) ? 0 : 1;
 	if (argc == 2)
 	{
 		split_result = ft_split(argv[1], ' ');
 		if (!split_result)
 			return (error());
+		i = 0;
 		while (split_result[i])
 		{
 			if (valid_number(split_result[i]) == true)
@@ -65,8 +54,17 @@ int	parse_arg(t_node **stack_a, char **argv, int argc)
 		}
 		free(split_result);
 	}
-	else if (argc > 2)
+	return (0);
+}
+
+int	parse_arg(t_node **stack_a, char **argv, int argc)
+{
+	int	i;
+	int	nbr;
+
+	if (argc > 2)
 	{
+		i = 1;
 		while (argv[i])
 		{
 			if (valid_number(argv[i]) == true)
@@ -78,4 +76,3 @@ int	parse_arg(t_node **stack_a, char **argv, int argc)
 	}
 	return (0);
 }
-*/
