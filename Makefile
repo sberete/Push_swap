@@ -6,7 +6,7 @@ INCLUDES = -Iincludes -I./lib/ft_printf/includes -I./lib/libft/includes
 
 LIBPRINTF = lib/ft_printf/lib/libprintf.a
 
-LIBLIBFT = lib/libft/lib/libft.a
+LIBFT = lib/libft/lib/libft.a
 
 SRC_DIR = src
 
@@ -25,7 +25,7 @@ NAME = push_swap
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBPRINTF) $(LIBLIBFT)
+$(NAME): $(OBJS) $(LIBPRINTF) $(LIBFT)
 			$(CC) $^ -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
@@ -37,7 +37,7 @@ $(OBJ_DIR):
 $(LIBPRINTF):
 	$(MAKE) -C lib/ft_printf
 
-$(LIBLIBFT):
+$(LIBFT):
 	$(MAKE) -C lib/libft
 
 .PHONY: clean

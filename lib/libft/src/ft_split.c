@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 22:22:07 by sxriimu           #+#    #+#             */
-/*   Updated: 2024/11/12 17:44:51 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/06 20:30:46 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_fill(int size, char **dest, char const *str, char c)
 			k++;
 		dest[j] = malloc(sizeof(char) * (k - i) + 1);
 		if (!dest)
-			return ;
+			return (ft_free(dest));
 		m = 0;
 		while (i < k)
 			dest[j][m++] = str[i++];

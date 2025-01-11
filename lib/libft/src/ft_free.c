@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:08:33 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/07 15:27:55 by sxriimu          ###   ########.fr       */
+/*   Created: 2024/11/09 22:44:41 by sxriimu           #+#    #+#             */
+/*   Updated: 2025/01/06 20:35:36 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	ft_lstsize(t_node *lst)
+void	ft_free(char **dest)
 {
-	t_node	*count;
-	int		i;
+	int	i;
 
-	i = 1;
-	if (!lst)
-		return (0);
-	count = lst->next;
-	while (count)
+	i = 0;
+	while (dest[i])
 	{
-		count = count->next;
+		free(dest[i]);
 		i++;
 	}
-	return (i);
+	free(dest);
 }
