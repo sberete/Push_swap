@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:09:00 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/07 22:53:39 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/14 20:48:02 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,32 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-void				swap_a(t_node **a);
-void				swap_b(t_node **b);
-void				swap_ss(t_node **a, t_node **b);
-void				push_a(t_node **a, t_node **b);
-void				push_b(t_node **a, t_node **b);
-void				rotate_a(t_node **a);
-void				rotate_b(t_node **b);
-void				rotate_rr(t_node **a, t_node **b);
-void				reverse_rotate_a(t_node **a);
-void				reverse_rotate_b(t_node **b);
-void				reverse_rotate_rrr(t_node **a, t_node **b);
+void				swap_a(t_node **);
+void				swap_b(t_node **);
+void				swap_ss(t_node **, t_node **);
+void				push_a(t_node **, t_node **);
+void				push_b(t_node **, t_node **);
+void				rotate_a(t_node **);
+void				rotate_b(t_node **);
+void				rotate_rr(t_node **, t_node **);
+void				reverse_rotate_a(t_node **);
+void				reverse_rotate_b(t_node **);
+void				reverse_rotate_rrr(t_node **, t_node **);
 
 int					error(void);
-int					ft_lstsize(t_node *lst);
-bool				valid_number(char *str);
-bool				check_doublon(t_node *ap);
+int					ft_lstsize(t_node *);
+bool				valid_number(char *);
+bool				check_doublon(t_node *);
 
-t_node				*new_node(int nbr);
-void				push_back(t_node **stack, int nbr);
+t_node				*new_node(int);
+void				push_back(t_node **, int);
+int					parsing(t_node **, char **, int);
+
+void				sort_two(t_node **);
+void				sort_three(t_node **);
+void				sort_stack(t_node **, t_node **);
+
 void				print_stack(t_node *stack);
-
-void				push_to_b(t_node **a, t_node **b);
-void				sort_two(t_node **a);
-void				sort_three(t_node **a);
-int					calcul_cost(t_node *a, t_node *b, int b_value);
-t_node				*find_best_move(t_node *a, t_node *b);
-void				best_move_application(t_node **a, t_node **b);
-void				sort_stack(t_node **a, t_node **b);
 #endif
 
 /*

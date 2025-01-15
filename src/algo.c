@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:18:50 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/11 23:26:29 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/15 17:10:31 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-	Créer un algo pour quand j'ai 3 noeuds
-	Un autre algo pour quand j'ai plus de 3 noeuds
-	Fonction pour push de la stack_a à la stack_b jusqu'à ce qu'il reste 3 noeuds
-	Fonction pour trier les 3 noeuds
-	Fonction pour le calcul de cout
-	Fonction pour le meilleur cout
-*/
 
 void	push_to_b(t_node **a, t_node **b)
 {
@@ -55,13 +46,6 @@ void	sort_three(t_node **a)
 		reverse_rotate_a(a);
 	sort_two(a);
 }
-
-/*
-	Une fonction pour calculer le cout pour chaque noeud
-	Une fonction pour trouver le meilleur coup
-	Une fonction pour appliquer le meilleur coup
-	Une fonction pour repeter ça jusqu'a la fin
-*/
 
 int	cost_to_top(t_node *stack, int value)
 {
@@ -110,6 +94,8 @@ int	search_target(t_node *a, int b_value)
 			target = current;
 		current = current->next;
 	}
+	if (!target)
+		return (cheapest_num(a));
 	return (target->value);
 }
 
@@ -118,9 +104,7 @@ int	calcul_cost(t_node *a, t_node *b, int b_value)
 	int	target;
 	int	cost;
 
-	// chercher la target
 	target = search_target(a, b_value);
-	// cost = cost_to_top(taget) + cost_to_top(noeud dans b)
 	cost = cost_to_top(a, target) + cost_to_top(b, b_value);
 	return (cost);
 }
@@ -151,44 +135,92 @@ t_node	*find_best_move(t_node *a, t_node *b)
 void	best_move_application(t_node **a, t_node **b)
 {
 	t_node	*best_node;
-	int		cost_best_node;
+	int		cost_a;
+	int		cost_b;
 
 	best_node = find_best_move(*a, *b);
-	ft_printf("%d\n", best_node->value);
-	cost_best_node = calcul_cost(*a, *b, best_node->value);
-	ft_printf("%d\n", cost_best_node);
-	while (cost_best_node > 0 && *b != best_node)
+	cost_a = cost_to_top(*a, search_target(*a, best_node->value));
+	cost_b = cost_to_top(*b, best_node->value);
+	ft_printf("%d, %d, %d, %d\n", best_node->value, search_target(*a,
+			best_node->value), cost_b, cost_a);
+	if (cost_a > 0 && cost_b > 0 && cost_a > ft_lstsize(*a) / 2
+		&& cost_b > ft_lstsize(*b) / 2)
 	{
-		rotate_b(b);
-		cost_best_node--;
+		cost_a = ft_lstsize(*a) - cost_a;
+		cost_b = ft_lstsize(*b) - cost_b;
+		while (cost_a > 0 && cost_b > 0)
+		{
+			reverse_rotate_rrr(a, b);
+			cost_a--;
+			cost_b--;
+		}
 	}
-	if (*b == best_node)
-		push_a(a, b);
-	while (cost_best_node > 0)
+	while (cost_a > 0 && cost_b > 0 && cost_a <= ft_lstsize(*a) / 2
+		&& cost_b <= ft_lstsize(*b) / 2)
+	{
+		rotate_rr(a, b);
+		cost_a--;
+		cost_b--;
+	}
+	if (cost_a > 0 && cost_a > ft_lstsize(*a) / 2)
+	{
+		cost_a = ft_lstsize(*a) - cost_a;
+		while (cost_a > 0)
+		{
+			reverse_rotate_a(a);
+			cost_a--;
+		}
+	}
+	while (cost_a > 0 && cost_a <= ft_lstsize(*a) / 2)
 	{
 		rotate_a(a);
-		cost_best_node--;
+		cost_a--;
 	}
+	if (cost_b > 0 && cost_b > ft_lstsize(*b) / 2)
+	{
+		cost_b = ft_lstsize(*b) - cost_b;
+		while (cost_b > 0)
+		{
+			reverse_rotate_b(b);
+			cost_b--;
+		}
+	}
+	while (cost_b > 0)
+	{
+		rotate_b(b);
+		cost_b--;
+	}
+	push_a(a, b);
 }
 
 void	cheap_to_top(t_node **a)
 {
 	int	cheap;
+	int	cost;
 
 	cheap = cheapest_num(*a);
-	if (cost_to_top(*a, cheap) > ft_lstsize(*a) / 2)
+	cost = cost_to_top(*a, cheap);
+	if (cost > ft_lstsize(*a) / 2)
 	{
 		while ((*a)->value != cheap)
 			reverse_rotate_a(a);
 	}
 	else
+	{
 		while ((*a)->value != cheap)
 			rotate_a(a);
+	}
 }
 
 void	sort_stack(t_node **a, t_node **b)
 {
+	push_to_b(a, b);
+	sort_three(a);
 	while (*b)
+	{
 		best_move_application(a, b);
-	//cheap_to_top(a);
+		print_stack(*a);
+		print_stack(*b);
+	}
+	cheap_to_top(a);
 }
