@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:08:33 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/07 15:27:55 by sxriimu          ###   ########.fr       */
+/*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
+/*   Updated: 2025/01/15 21:31:34 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,18 @@ int	ft_lstsize(t_node *lst)
 		i++;
 	}
 	return (i);
+}
+
+int	cheapest_num(t_node *stack)
+{
+	int	cheap;
+
+	cheap = stack->value;
+	while (stack)
+	{
+		if (cheap > stack->value)
+			cheap = stack->value;
+		stack = stack->next;
+	}
+	return (cheap);
 }

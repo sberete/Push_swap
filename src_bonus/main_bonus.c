@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 22:02:00 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/15 22:04:21 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	print_stack(t_node *stack)
 {
@@ -50,4 +50,8 @@ int	main(int argc, char **argv)
 	print_stack(stack_a);
 	print_stack(stack_b);
 	free_stack(stack_a);
+	if (stack_is_not_sorted(stack_a) == true)
+		return (ko());
+	else
+		return (ok());
 }

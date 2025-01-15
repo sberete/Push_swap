@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   swap_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:01:16 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:47:30 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "push_swap_bonus.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	swap(t_node *ap)
 {
-	int	i;
+	int	tmp;
 
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
+	if (!ap || !(ap->next))
+		return ;
+	tmp = ap->value;
+	ap->value = ap->next->value;
+	ap->next->value = tmp;
 }
 
-/*
-void f(unsigned int i, char *s)
+void	swap_a(t_node **a)
 {
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	swap(*a);
+	ft_printf("sa\n");
 }
 
-int main(void)
+void	swap_b(t_node **b)
 {
-	char *str = "abc";
-
-	ft_striteri(str, *f);
+	swap(*b);
+	ft_printf("sb\n");
 }
-*/
+
+void	swap_ss(t_node **a, t_node **b)
+{
+	swap(*a);
+	swap(*b);
+	ft_printf("ss\n");
+}

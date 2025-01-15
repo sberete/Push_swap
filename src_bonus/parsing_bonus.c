@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 22:03:39 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:47:15 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 t_node	*new_node(int nbr)
 {
@@ -83,7 +83,7 @@ int	parse_mult_args(t_node **stack_a, char **argv)
 	return (0);
 }
 
-int	parsing(t_node **stack_a, int argc, char **argv)
+int	parsing(t_node **stack_a, char **argv, int argc)
 {
 	if (argc < 2)
 		return (error());

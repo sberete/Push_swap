@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:09:00 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 22:02:45 by sberete          ###   ########.fr       */
+/*   Created: 2025/01/15 20:20:54 by sberete           #+#    #+#             */
+/*   Updated: 2025/01/15 22:03:08 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "ft_printf.h"
 # include "libft.h"
@@ -40,12 +40,15 @@ void				reverse_rotate_b(t_node **b);
 void				reverse_rotate_rrr(t_node **a, t_node **b);
 
 int					error(void);
+int					ok(void);
+int					ko(void);
 
 int					ft_lstsize(t_node *stack);
 int					cheapest_num(t_node *stack);
 
 bool				valid_number(char *nbr);
 bool				check_doublon(t_node *stack);
+bool				stack_is_not_sorted(t_node *ap);
 
 t_node				*new_node(int nbr);
 void				push_back(t_node **stack, int nbr);
@@ -54,9 +57,6 @@ int					parsing(t_node **stack, int argc, char **argv);
 void				sort_two(t_node **stack);
 void				sort_three(t_node **stack);
 void				sort_stack(t_node **a, t_node **b);
-void				push_to_b(t_node **a, t_node **b);
-int					cost_to_top(t_node *stack, int value);
-int					search_target(t_node *a, int b_value);
 
 void				print_stack(t_node *stack);
 #endif

@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:01:16 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/15 21:03:43 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "push_swap_bonus.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	error(void)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
+	write(2, "Error\n", 6);
+	return (0);
 }
 
-/*
-void f(unsigned int i, char *s)
+int	ok(void)
 {
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	write(1, "OK\n", 3);
+	return (0);
 }
 
-int main(void)
+int	ko(void)
 {
-	char *str = "abc";
-
-	ft_striteri(str, *f);
+	write(1, "KO\n", 3);
+	return (0);
 }
-*/

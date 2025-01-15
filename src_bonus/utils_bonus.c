@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:01:16 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:47:33 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "push_swap_bonus.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_lstsize(t_node *lst)
 {
-	int	i;
+	t_node	*count;
+	int		i;
 
-	i = 0;
-	while (s[i])
+	i = 1;
+	if (!lst)
+		return (0);
+	count = lst->next;
+	while (count)
 	{
-		f(i, &s[i]);
+		count = count->next;
 		i++;
 	}
+	return (i);
 }
 
-/*
-void f(unsigned int i, char *s)
+int	cheapest_num(t_node *stack)
 {
-	while (s[i])
+	int	cheap;
+
+	cheap = stack->value;
+	while (stack)
 	{
-		write(1, &s[i], 1);
-		i++;
+		if (cheap > stack->value)
+			cheap = stack->value;
+		stack = stack->next;
 	}
+	return (cheap);
 }
-
-int main(void)
-{
-	char *str = "abc";
-
-	ft_striteri(str, *f);
-}
-*/

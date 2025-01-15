@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   rotate_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:01:16 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:47:26 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "push_swap_bonus.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	rotate(t_node **ap)
 {
-	int	i;
+	t_node	*tmp;
+	t_node	*i;
 
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
+	if (!ap || !(*ap) || !((*ap)->next))
+		return ;
+	tmp = *ap;
+	*ap = (*ap)->next;
+	tmp->next = NULL;
+	i = *ap;
+	while (i->next)
+		i = i->next;
+	i->next = tmp;
 }
 
-/*
-void f(unsigned int i, char *s)
+void	rotate_a(t_node **a)
 {
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	rotate(a);
+	ft_printf("ra\n");
 }
 
-int main(void)
+void	rotate_b(t_node **b)
 {
-	char *str = "abc";
-
-	ft_striteri(str, *f);
+	rotate(b);
+	ft_printf("rb\n");
 }
-*/
+
+void	rotate_rr(t_node **a, t_node **b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
+}
