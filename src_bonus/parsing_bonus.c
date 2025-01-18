@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:47:15 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/16 00:07:43 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	parse_mult_args(t_node **stack_a, char **argv)
 	return (0);
 }
 
-int	parsing(t_node **stack_a, char **argv, int argc)
+int	parsing(t_node **stack_a, int argc, char **argv)
 {
 	if (argc < 2)
 		return (error());

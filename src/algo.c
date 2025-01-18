@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:18:50 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 22:00:32 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:37:36 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,51 +54,17 @@ void	best_move_application(t_node **a, t_node **b)
 	best_node = find_best_move(*a, *b);
 	cost_a = cost_to_top(*a, search_target(*a, best_node->value));
 	cost_b = cost_to_top(*b, best_node->value);
+	ft_printf("%d, %d, %d, %d\n", best_node->value, search_target(*a,
+			best_node->value), cost_b, cost_a);
 	if (cost_a > ft_lstsize(*a) / 2 && cost_b > ft_lstsize(*b) / 2)
-	{
-		cost_a = ft_lstsize(*a) - cost_a;
-		cost_b = ft_lstsize(*b) - cost_b;
-		while (cost_a > 0 && cost_b > 0)
-		{
-			reverse_rotate_rrr(a, b);
-			cost_a--;
-			cost_b--;
-		}
-	}
-	while (cost_a > 0)
-	{
-		rotate_rr(a, b);
-		cost_a--;
-		cost_b--;
-	}
+		rrr(a, b, &cost_a, &cost_b);
+	rr(a, b, &cost_a, &cost_b);
 	if (cost_a > ft_lstsize(*a) / 2)
-	{
-		cost_a = ft_lstsize(*a) - cost_a;
-		while (cost_a > 0)
-		{
-			reverse_rotate_a(a);
-			cost_a--;
-		}
-	}
-	while (cost_a > 0)
-	{
-		rotate_a(a);
-		cost_a--;
-	}
+		rra(a, &cost_a);
+	ra(a, &cost_a);
 	if (cost_b > ft_lstsize(*b) / 2)
-	{
-		cost_b = ft_lstsize(*b) - cost_b;
-		while (cost_b > 0)
-		{
-			reverse_rotate_b(b);
-			cost_b--;
-		}
-	}
-	while (cost_b > 0)
-	{
-		rotate_b(b);
-		cost_b--;
-	}
+		rrb(b, &cost_b);
+	rb(b, &cost_b);
 	push_a(a, b);
 }
 
@@ -114,11 +80,8 @@ void	cheap_to_top(t_node **a)
 		while ((*a)->value != cheap)
 			reverse_rotate_a(a);
 	}
-	else
-	{
-		while ((*a)->value != cheap)
-			rotate_a(a);
-	}
+	while ((*a)->value != cheap)
+		rotate_a(a);
 }
 
 void	sort_stack(t_node **a, t_node **b)
@@ -126,6 +89,10 @@ void	sort_stack(t_node **a, t_node **b)
 	push_to_b(a, b);
 	sort_three(a);
 	while (*b)
+	{
 		best_move_application(a, b);
+		print_stack(*a);
+		print_stack(*b);
+	}
 	cheap_to_top(a);
 }

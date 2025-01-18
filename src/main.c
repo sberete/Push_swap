@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 22:02:00 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/17 19:02:58 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,19 @@ void	print_stack(t_node *stack)
 {
 	while (stack)
 	{
-		printf("%d -> ", stack->value);
+		ft_printf("%d -> ", stack->value);
 		stack = stack->next;
 	}
-	printf("NULL\n");
+	ft_printf("NULL\n");
 }
 
-void	free_stack(t_node *a)
+void	free_stack(t_node **a)
 {
-	while (a)
+	while (*a)
 	{
-		free(a);
-		a = a->next;
+		free(*a);
+		*a = (*a)->next;
 	}
-	free(a);
 }
 
 int	main(int argc, char **argv)
@@ -49,5 +48,5 @@ int	main(int argc, char **argv)
 		sort_stack(&stack_a, &stack_b);
 	print_stack(stack_a);
 	print_stack(stack_b);
-	free_stack(stack_a);
+	free_stack(&stack_a);
 }

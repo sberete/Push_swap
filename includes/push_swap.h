@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:09:00 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 22:02:45 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:36:14 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void				reverse_rotate_a(t_node **a);
 void				reverse_rotate_b(t_node **b);
 void				reverse_rotate_rrr(t_node **a, t_node **b);
 
+void				rrr(t_node **a, t_node **b, int *cost_a, int *cost_b);
+void				rr(t_node **a, t_node **b, int *cost_a, int *cost_b);
+void				rra(t_node **a, int *cost_a);
+void				ra(t_node **a, int *cost_a);
+void				rrb(t_node **b, int *cost_b);
+void				rb(t_node **b, int *cost_b);
 int					error(void);
 
 int					ft_lstsize(t_node *stack);

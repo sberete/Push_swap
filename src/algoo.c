@@ -1,62 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   algoo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/17 18:41:11 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:39:07 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstsize(t_node *lst)
+void	rrr(t_node **a, t_node **b, int *cost_a, int *cost_b)
 {
-	t_node	*count;
-	int		i;
-
-	i = 1;
-	if (!lst)
-		return (0);
-	count = lst->next;
-	while (count)
+	*cost_a = ft_lstsize(*a) - *cost_a;
+	*cost_b = ft_lstsize(*b) - *cost_b;
+	while (*cost_a > 0 && *cost_b > 0)
 	{
-		count = count->next;
-		i++;
+		reverse_rotate_rrr(a, b);
+		(*cost_a)--;
+		(*cost_b)--;
 	}
-	return (i);
 }
 
-int	cheapest_num(t_node *stack)
+void	rr(t_node **a, t_node **b, int *cost_a, int *cost_b)
 {
-	int	cheap;
-
-	cheap = stack->value;
-	while (stack)
+	while (*cost_a > 0 && *cost_b > 0)
 	{
-		if (cheap > stack->value)
-			cheap = stack->value;
-		stack = stack->next;
+		rotate_rr(a, b);
+		(*cost_a)--;
+		(*cost_b)--;
 	}
-	return (cheap);
 }
 
-void	ra(t_node **a, int *cost_a)
+void	rra(t_node **a, int *cost_a)
 {
+	*cost_a = ft_lstsize(*a) - *cost_a;
 	while (*cost_a > 0)
 	{
-		rotate_a(a);
+		reverse_rotate_a(a);
 		(*cost_a)--;
 	}
 }
 
-void	rb(t_node **b, int *cost_b)
+void	rrb(t_node **b, int *cost_b)
 {
+	*cost_b = ft_lstsize(*b) - *cost_b;
 	while (*cost_b > 0)
 	{
-		rotate_b(b);
+		reverse_rotate_b(b);
 		(*cost_b)--;
 	}
 }
