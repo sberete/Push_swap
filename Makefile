@@ -28,7 +28,10 @@ NAME_BONUS = checker
 -include $(DEPEND)
 
 .PHONY: all
-all: $(NAME) $(NAME_BONUS)
+all: $(NAME) 
+
+.PHONY: bonus
+bonus: $(NAME_BONUS)
 
 $(NAME): $(OBJS) $(LIBPRINTF) $(LIBFT)
 			$(CC) $^ -o $@

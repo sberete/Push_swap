@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:26:24 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 21:32:02 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/25 15:40:46 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,24 @@ int	search_target(t_node *a, int b_value)
 	}
 	if (!target)
 		return (cheapest_num(a));
+	return (target->value);
+}
+
+int	search_target_to_b(t_node *b, int b_value)
+{
+	t_node	*current;
+	t_node	*target;
+
+	current = b;
+	target = NULL;
+	while (current)
+	{
+		if (current->value < b_value && (target == NULL
+				|| current->value > target->value))
+			target = current;
+		current = current->next;
+	}
+	if (!target)
+		return (highest_num(b));
 	return (target->value);
 }

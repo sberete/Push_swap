@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:09:00 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/17 18:36:14 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/25 15:43:43 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ int					error(void);
 
 int					ft_lstsize(t_node *stack);
 int					cheapest_num(t_node *stack);
-
+int	highest_num(t_node *stack);
+int	calcul_cost_to_b(t_node *a, t_node *b, int a_value);
+t_node	*find_best_move_to_b(t_node *a, t_node *b);
+int	search_target_to_b(t_node *b, int b_value);
 bool				valid_number(char *nbr);
 bool				check_doublon(t_node *stack);
 
