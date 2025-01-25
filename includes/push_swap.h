@@ -25,19 +25,37 @@ typedef struct s_node
 {
 	int				value;
 	struct s_node	*next;
+	struct s_node	*prev;
 }					t_node;
 
-void				swap_a(t_node **a);
-void				swap_b(t_node **a);
-void				swap_ss(t_node **a, t_node **b);
-void				push_a(t_node **a, t_node **b);
-void				push_b(t_node **a, t_node **b);
-void				rotate_a(t_node **a);
-void				rotate_b(t_node **b);
-void				rotate_rr(t_node **a, t_node **b);
-void				reverse_rotate_a(t_node **a);
-void				reverse_rotate_b(t_node **b);
-void				reverse_rotate_rrr(t_node **a, t_node **b);
+typedef struct s_stack
+{
+	size_t len;
+	t_node *head;
+	t_node *last;
+}				t_stack;
+
+
+typedef struct s_cost
+{
+	int ra;
+	int rra;
+	int rb;
+	int rrb;$
+}				t_cost;
+
+
+void				swap_a(t_stack *a);
+void				swap_b(t_stack *a);
+void				swap_ss(t_stack *a, t_stack *b);
+void				push_a(t_stack *a, t_stack *b);
+void				push_b(t_stack *a, t_stack *b);
+void				rotate_a(t_stack *a);
+void				rotate_b(t_stack *b);
+void				rotate_rr(t_stack *a, t_stack *b);
+void				reverse_rotate_a(t_stack *a);
+void				reverse_rotate_b(t_stack *b);
+void				reverse_rotate_rrr(t_stack *a, t_stack *b);
 
 void				rrr(t_node **a, t_node **b, int *cost_a, int *cost_b);
 void				rr(t_node **a, t_node **b, int *cost_a, int *cost_b);

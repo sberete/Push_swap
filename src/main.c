@@ -22,34 +22,34 @@ void	print_stack(t_node *stack)
 	ft_printf("NULL\n");
 }
 
-void	free_stack(t_node **a)
+void	free_stack(t_stack *stack)
 {
 	t_node *tmp;
+	t_node	*next;
 	
-	while (*a)
+	tmp = stack->head;
+	while (tmp)
 	{
-		tmp = (*a)->next;
-		free(*a);
-		*a = tmp;
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_stack stack_a;
+	t_stack stack_b;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	parsing(&stack_a, argc, argv);
-	//print_stack(stack_a);
-	if (ft_lstsize(stack_a) == 2)
+	ft_memset(&stack_a, 0, sizeof(t_stack));
+	ft_memset(&stack_b, 0, sizeof(t_stack));
+	if (parsing(&stack_a, argc, argv) == 1)
+		return error();
+	if (stack_a.len == 2)
 		sort_two(&stack_a);
-	else if (ft_lstsize(stack_a) == 3)
+	else if (stack_a.len == 3)
 		sort_three(&stack_a);
-	else if (ft_lstsize(stack_a) > 3)
+	else if (stack_a.len > 3)
 		sort_stack(&stack_a, &stack_b);
-	//print_stack(stack_a);
-	//print_stack(stack_b);
 	free_stack(&stack_a);
 }

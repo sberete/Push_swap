@@ -12,32 +12,32 @@
 
 #include "push_swap.h"
 
-void	swap(t_node *ap)
+void	swap(t_stack *ap)
 {
 	int	tmp;
 
-	if (!ap || !(ap->next))
+	if (!ap)
 		return ;
-	tmp = ap->value;
-	ap->value = ap->next->value;
-	ap->next->value = tmp;
+	tmp = ap->head;
+	ap->head = ap->head->next;
+	ap->head->next = tmp;
 }
 
-void	swap_a(t_node **a)
+void	swap_a(t_stack *a)
 {
-	swap(*a);
+	swap(a);
 	ft_printf("sa\n");
 }
 
-void	swap_b(t_node **b)
+void	swap_b(t_stack *b)
 {
-	swap(*b);
+	swap(b);
 	ft_printf("sb\n");
 }
 
-void	swap_ss(t_node **a, t_node **b)
+void	swap_ss(t_stack *a, t_stack *b)
 {
-	swap(*a);
-	swap(*b);
+	swap(a);
+	swap(b);
 	ft_printf("ss\n");
 }

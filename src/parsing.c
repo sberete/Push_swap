@@ -21,29 +21,33 @@ t_node	*new_node(int nbr)
 		return (NULL);
 	node->value = nbr;
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }
 
-void	push_back(t_node **stack, int nbr)
+bool	push_back(t_stack *stack, int nbr)
 {
 	t_node	*node;
 	t_node	*current;
-
 	node = new_node(nbr);
 	if (node == NULL)
-		return ;
-	if (*stack == NULL)
+		return (false);
+	if (stack->head == NULL)
 	{
-		*stack = node;
-		return ;
+		stack->head = node;
+		stack->last = node;
 	}
-	current = *stack;
-	while (current->next)
-		current = current->next;
-	current->next = node;
+	else
+	{
+		node->prev = stack->last;
+		stack->last->next = node;
+		stack->last = node;
+	}
+	stack->len++;
+	return (true);
 }
-
-int	parse_two_arg(t_node **stack_a, char **argv)
+ //6 5 2 3
+int	parse_two_arg(t_stack *stack_a, char **argv)
 {
 	char	**split_result;
 	int		i;
@@ -66,7 +70,7 @@ int	parse_two_arg(t_node **stack_a, char **argv)
 	return (0);
 }
 
-int	parse_mult_args(t_node **stack_a, char **argv)
+int	parse_mult_args(t_stack *stack_a, char **argv)
 {
 	int	i;
 	int	nbr;
@@ -83,7 +87,7 @@ int	parse_mult_args(t_node **stack_a, char **argv)
 	return (0);
 }
 
-int	parsing(t_node **stack_a, int argc, char **argv)
+int	parsing(t_stack *stack_a, int argc, char **argv)
 {
 	if (argc < 2)
 		return (error());
@@ -91,7 +95,7 @@ int	parsing(t_node **stack_a, int argc, char **argv)
 		parse_two_arg(stack_a, argv);
 	else if (argc > 2)
 		parse_mult_args(stack_a, argv);
-	if (check_doublon(*stack_a) == true)
+	if (check_doublon(stack_a) == true)
 		return (error());
 	return (0);
 }

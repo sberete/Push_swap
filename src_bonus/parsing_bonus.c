@@ -86,12 +86,12 @@ int	parse_mult_args(t_node **stack_a, char **argv)
 int	parsing(t_node **stack_a, int argc, char **argv)
 {
 	if (argc < 2)
-		return (error());
+		return (1);
 	else if (argc == 2)
 		parse_two_arg(stack_a, argv);
 	else if (argc > 2)
 		parse_mult_args(stack_a, argv);
 	if (check_doublon(*stack_a) == true)
-		return (error());
+		return (1);
 	return (0);
 }

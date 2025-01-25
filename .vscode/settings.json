@@ -3,6 +3,11 @@
     "*.embeddedhtml": "html",
     "push_swap.h": "c",
     "ft_printf.h": "c",
-    "algorithm": "c"
+    "algorithm": "c",
+    "type_traits": "c",
+    "random": "c",
+    "array": "c",
+    "string_view": "c",
+    "initializer_list": "c"
   }
 }

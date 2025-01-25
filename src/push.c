@@ -12,28 +12,30 @@
 
 #include "push_swap.h"
 
-void	push_a(t_node **a, t_node **b)
+void	push(t_stack *receiving_stack, t_stack *giving_stack)
 {
-	t_node	*tmp;
+	t_node	*new_receiveng_stack_head;
 
-	if (!b || !(*b))
+	if (giving_stack->len == 0)
 		return ;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = *a;
-	*a = tmp;
+	new_receiveng_stack_head = giving_stack->head;
+	giving_stack->head = giving_stack->head->next;
+	new_receiveng_stack_head->next = receiving_stack->head;
+	receiving_stack->head = new_receiveng_stack_head;
+	if (receiving_stack->len == 0)
+		receiving_stack->last = new_receiveng_stack_head;
+	receiving_stack->len++;
+	giving_stack->len--;
+}
+
+void	push_a(t_stack *a, t_stack *b)
+{
+	push(a, b);
 	ft_printf("pa\n");
 }
 
-void	push_b(t_node **a, t_node **b)
+void	push_b(t_stack *a, t_stack *b)
 {
-	t_node	*tmp;
-
-	if (!a || !(*a))
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = *b;
-	*b = tmp;
+	push(b, a);
 	ft_printf("pb\n");
 }
