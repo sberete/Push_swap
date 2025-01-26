@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/17 19:03:34 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/26 15:09:30 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 bool	valid_number(char *str)
 {
-	long long	value;
+	long long	val;
 	int			sign;
 	int			i;
 
 	i = 0;
 	sign = 1;
-	value = 0;
+	val = 0;
 	if (str[0] == '-' || str[0] == '+')
 	{
 		if (str[0] == '-')
@@ -33,9 +33,8 @@ bool	valid_number(char *str)
 	{
 		if (str[i] < '0' || str[i] > '9')
 			return (false);
-		value = value * 10 + (str[i] - '0');
-		if ((sign == 1 && value > INT_MAX) || (sign == -1
-				&& (-value) < INT_MIN))
+		val = val * 10 + (str[i] - '0');
+		if ((sign == 1 && val > INT_MAX) || (sign == -1 && (-val) < INT_MIN))
 			return (false);
 		i++;
 	}

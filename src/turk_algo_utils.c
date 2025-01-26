@@ -15,12 +15,12 @@ int	cost_to_top(t_node *stack, int value)
 	return (index);
 }
 
-int	search_target(t_node *a, int b_value)
+int	search_target(t_node *stack_a, int b_value)
 {
 	t_node	*current;
 	t_node	*target;
 
-	current = a;
+	current = stack_a;
 	target = NULL;
 	while (current)
 	{
@@ -30,16 +30,16 @@ int	search_target(t_node *a, int b_value)
 		current = current->next;
 	}
 	if (!target)
-		return (cheapest_num(a));
+		return (cheapest_num(stack_a));
 	return (target->value);
 }
 
-int	search_target_to_b(t_node *b, int b_value)
+int	search_target_to_b(t_node *stack_b, int b_value)
 {
 	t_node	*current;
 	t_node	*target;
 
-	current = b;
+	current = stack_b;
 	target = NULL;
 	while (current)
 	{
@@ -49,6 +49,22 @@ int	search_target_to_b(t_node *b, int b_value)
 		current = current->next;
 	}
 	if (!target)
-		return (highest_num(b));
+		return (highest_num(stack_b));
 	return (target->value);
+}
+
+void	cheap_to_top(t_stack *stack)
+{
+	int cheap;
+	size_t cost;
+
+	cheap = cheapest_num(stack->head);
+	cost = cost_to_top(stack->head, cheap);
+	if (cost > stack->len / 2)
+	{
+		while (stack->head->value != cheap)
+			reverse_rotate_a(stack);
+	}
+	while (stack->head->value != cheap)
+		rotate_a(stack);
 }
