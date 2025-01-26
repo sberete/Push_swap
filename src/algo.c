@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 int	calcul_cost(t_node *a, t_node *b, int b_value)
 {
 	int	target;
@@ -50,22 +50,9 @@ void	best_move_application(t_stack *stack_a, t_stack *stack_b)
 	
 }
 
-void	best_move_application_to_b(t_stack *stack_a, t_stack *stack_b)
-{
-	t_node	*current;
-	t_cost	best_cost;
-	int		cost_a;
-	int		cost_b;
 
-	current = stack_a->head;
-	while (current)
-	{
-		best_cost = find_best_move(current, stack_b->head);
-		current = current->next;
-	}
-}
 
-/*
+
 2 1
 3 0
 4
@@ -74,8 +61,6 @@ void	best_move_application_to_b(t_stack *stack_a, t_stack *stack_b)
 7
 11
 
-
-*/
 
 void	cheap_to_top(t_node **a)
 {
@@ -109,6 +94,21 @@ void	high_to_top_in_b(t_node **a)
 		rotate_b(a);
 }
 
+void	best_move_application_to_b(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*current;
+	t_cost	best_cost;
+	int		cost_a;
+	int		cost_b;
+
+	current = stack_a->head;
+	while (current)
+	{
+		best_cost = find_best_move(current, stack_b->head);
+		current = current->next;
+	}
+}
+*/
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	size_t	len;
@@ -118,7 +118,7 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 	len = stack_a->len;	
 	while (len > 3)
 	{
-		best_move_application_to_b(stack_a, stack_b);
+		//best_move_application_to_b(stack_a, stack_b);
 		--len;
 	}
 

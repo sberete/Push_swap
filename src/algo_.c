@@ -12,38 +12,38 @@
 
 #include "push_swap.h"
 
-void	push_to_b(t_node **a, t_node **b)
+void	push_to_b(t_stack *stack_a, t_stack *stack_b)
 {
-	while (ft_lstsize(*a) > 3)
-		push_b(a, b);
+	while (stack_a->len > 3)
+		push_b(stack_a, stack_b);
 }
 
-void	sort_two(t_node **a)
+void	sort_two(t_stack *stack)
 {
 	int	first;
 	int	second;
 
-	first = (*a)->value;
-	second = (*a)->next->value;
+	first = stack->head->value;
+	second = stack->head->next->value;
 	if (first > second)
-		swap_a(a);
+		swap_a(stack);
 	else
 		return ;
 }
 
-void	sort_three(t_node **a)
+void	sort_three(t_stack *stack)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	first = (*a)->value;
-	second = (*a)->next->value;
-	third = (*a)->next->next->value;
+	first = stack->head->value;
+	second = stack->head->next->value;
+	third = stack->head->next->next->value;
 	if (first > second && first > third)
-		rotate_a(a);
+		rotate_a(stack);
 	else if (second > first && second > third)
-		reverse_rotate_a(a);
-	sort_two(a);
+		reverse_rotate_a(stack);
+	sort_two(stack);
 }
 

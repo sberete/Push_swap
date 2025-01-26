@@ -12,15 +12,17 @@
 
 #include "push_swap.h"
 
-void	print_stack(t_node *stack)
+void	print_stack(t_stack *stack)
 {
-	while (stack)
+	t_node *tmp = stack->head;
+	while (tmp)
 	{
-		ft_printf("%d -> ", stack->value);
-		stack = stack->next;
+		ft_printf("%d -> ", tmp->value);
+		tmp = tmp->next;
 	}
 	ft_printf("NULL\n");
 }
+
 
 void	free_stack(t_stack *stack)
 {
@@ -44,7 +46,10 @@ int	main(int argc, char **argv)
 	ft_memset(&stack_a, 0, sizeof(t_stack));
 	ft_memset(&stack_b, 0, sizeof(t_stack));
 	if (parsing(&stack_a, argc, argv) == 1)
+	{
+		free_stack(&stack_a);
 		return error();
+	}
 	if (stack_a.len == 2)
 		sort_two(&stack_a);
 	else if (stack_a.len == 3)

@@ -28,7 +28,6 @@ t_node	*new_node(int nbr)
 bool	push_back(t_stack *stack, int nbr)
 {
 	t_node	*node;
-	t_node	*current;
 	node = new_node(nbr);
 	if (node == NULL)
 		return (false);
@@ -46,7 +45,7 @@ bool	push_back(t_stack *stack, int nbr)
 	stack->len++;
 	return (true);
 }
- //6 5 2 3
+
 int	parse_two_arg(t_stack *stack_a, char **argv)
 {
 	char	**split_result;
@@ -55,18 +54,20 @@ int	parse_two_arg(t_stack *stack_a, char **argv)
 
 	split_result = ft_split(argv[1], ' ');
 	if (split_result == NULL)
-		return (error());
+		return (1);
 	i = 0;
 	while (split_result[i])
 	{
-		if (valid_number(split_result[i]) == true)
-			return (error());
+		if (valid_number(split_result[i]) == false)
+		{
+			ft_free(split_result);
+			return (1);
+		}
 		nbr = ft_atoi(split_result[i]);
 		push_back(stack_a, nbr);
-		free(split_result[i]);
 		i++;
 	}
-	free(split_result);
+	ft_free(split_result);
 	return (0);
 }
 
@@ -78,8 +79,8 @@ int	parse_mult_args(t_stack *stack_a, char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		if (valid_number(argv[i]) == true)
-			return (error());
+		if (valid_number(argv[i]) == false)
+			return (1);
 		nbr = ft_atoi(argv[i]);
 		push_back(stack_a, nbr);
 		i++;
@@ -90,12 +91,12 @@ int	parse_mult_args(t_stack *stack_a, char **argv)
 int	parsing(t_stack *stack_a, int argc, char **argv)
 {
 	if (argc < 2)
-		return (error());
-	else if (argc == 2)
-		parse_two_arg(stack_a, argv);
-	else if (argc > 2)
-		parse_mult_args(stack_a, argv);
+		return (1);
+	else if (argc == 2 && parse_two_arg(stack_a, argv) == 1)
+		return (1);
+	else if (argc > 2 && parse_mult_args(stack_a, argv) == 1)
+		return (1);
 	if (check_doublon(stack_a) == true)
-		return (error());
+		return (1);
 	return (0);
 }

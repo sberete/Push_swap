@@ -28,26 +28,26 @@ bool	valid_number(char *str)
 		i++;
 	}
 	if (str[i] == '\0')
-		return (true);
+		return (false);
 	while (str[i] != '\0')
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return (true);
+			return (false);
 		value = value * 10 + (str[i] - '0');
 		if ((sign == 1 && value > INT_MAX) || (sign == -1
 				&& (-value) < INT_MIN))
-			return (true);
+			return (false);
 		i++;
 	}
-	return (false);
+	return (true);
 }
 
-bool	check_doublon(t_node *ap)
+bool	check_doublon(t_stack *stack)
 {
 	t_node	*current;
 	t_node	*check;
 
-	current = ap;
+	current = stack->head;
 	while (current)
 	{
 		check = current->next;

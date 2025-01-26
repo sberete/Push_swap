@@ -70,3 +70,5 @@ fclean: clean
 	rm -rf $(NAME_BONUS)
 	$(MAKE) -C lib/ft_printf fclean
 	$(MAKE) -C lib/libft fclean
+
+re: fclean all

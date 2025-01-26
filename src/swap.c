@@ -14,7 +14,7 @@
 
 void	swap(t_stack *ap)
 {
-	int	tmp;
+	t_node *tmp;
 
 	if (!ap)
 		return ;
