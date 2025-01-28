@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_.c                                            :+:      :+:    :+:   */
+/*   turk_algo_utils_suite.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:26:24 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/26 17:48:35 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/28 18:20:27 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	push_to_b(t_stack *stack_a, t_stack *stack_b)
-{
-	while (stack_a->len > 3)
-		push_b(stack_a, stack_b);
-}
 
 void	sort_two(t_stack *stack)
 {
@@ -39,7 +33,7 @@ void	sort_two_b(t_stack *stack)
 	first = stack->head->value;
 	second = stack->head->next->value;
 	if (first < second)
-		swap_a(stack);
+		swap_b(stack);
 	else
 		return ;
 }
@@ -60,19 +54,30 @@ void	sort_three(t_stack *stack)
 	sort_two(stack);
 }
 
-void	sort_three_b(t_stack *stack)
+int	cheapest_num(t_node *stack)
 {
-	int	first;
-	int	second;
-	int	third;
+	int	cheap;
 
-	first = stack->head->value;
-	second = stack->head->next->value;
-	third = stack->head->next->next->value;
-	if (third > first && third > second)
-		reverse_rotate_b(stack);
-	else if (second > first && second > third)
-		rotate_b(stack);
-	sort_two_b(stack);
+	cheap = stack->value;
+	while (stack)
+	{
+		if (cheap > stack->value)
+			cheap = stack->value;
+		stack = stack->next;
+	}
+	return (cheap);
 }
 
+int	highest_num(t_node *stack)
+{
+	int	high;
+
+	high = stack->value;
+	while (stack)
+	{
+		if (high < stack->value)
+			high = stack->value;
+		stack = stack->next;
+	}
+	return (high);
+}

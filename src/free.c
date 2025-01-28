@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:00:03 by sberete          ###   ########.fr       */
+/*   Created: 2025/01/28 10:42:47 by sberete           #+#    #+#             */
+/*   Updated: 2025/01/28 18:34:44 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_free(char **dest)
+void	free_stack(t_stack *stack)
 {
-	int	i;
+	t_node	*tmp;
+	t_node	*next;
 
-	i = 0;
-	while (dest[i])
+	tmp = stack->head;
+	while (tmp)
 	{
-		free(dest[i]);
-		i++;
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
 	}
-	free(dest);
 }

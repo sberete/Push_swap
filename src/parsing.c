@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/26 17:47:32 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/28 18:48:38 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ bool	push_back(t_stack *stack, int nbr)
 		stack->last = node;
 	}
 	stack->len++;
+	stack->last->next = NULL;
 	return (true);
 }
 
@@ -61,14 +62,14 @@ int	parse_two_arg(t_stack *stack_a, char **argv)
 	{
 		if (valid_number(split_result[i]) == false)
 		{
-			ft_free(split_result);
+			free_tab(split_result);
 			return (1);
 		}
 		nbr = ft_atoi(split_result[i]);
 		push_back(stack_a, nbr);
 		i++;
 	}
-	ft_free(split_result);
+	free_tab(split_result);
 	return (0);
 }
 

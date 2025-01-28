@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/26 16:24:38 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/28 18:39:45 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	cheapest_num(t_node *stack)
+void	free_tab(char **dest)
 {
-	int	cheap;
+	int	i;
 
-	cheap = stack->value;
-	while (stack)
+	i = 0;
+	while (dest[i])
 	{
-		if (cheap > stack->value)
-			cheap = stack->value;
-		stack = stack->next;
+		free(dest[i]);
+		i++;
 	}
-	return (cheap);
-}
-
-int	highest_num(t_node *stack)
-{
-	int	high;
-
-	high = stack->value;
-	while (stack)
-	{
-		if (high < stack->value)
-			high = stack->value;
-		stack = stack->next;
-	}
-	return (high);
+	free(dest);
 }

@@ -3,40 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/26 17:38:38 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:08:03 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack)
+void print_stack(t_stack *stack)
 {
-	t_node	*tmp;
+    t_node *tmp;
 
-	tmp = stack->head;
-	while (tmp)
-	{
-		ft_printf("%d -> ", tmp->value);
-		tmp = tmp->next;
-	}
-	ft_printf("NULL\n");
-}
-
-void	free_stack(t_stack *stack)
-{
-	t_node	*tmp;
-	t_node	*next;
-
-	tmp = stack->head;
-	while (tmp)
-	{
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
-	}
+    tmp = stack->head;
+    while (tmp)
+    {
+        ft_printf("%d -> ", tmp->value);
+        tmp = tmp->next;
+    }
+    ft_printf("NULL\n");
 }
 
 int	main(int argc, char **argv)
