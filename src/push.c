@@ -6,13 +6,13 @@
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 19:59:06 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:42:33 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack *receiving_stack, t_stack *giving_stack)
+static void	push(t_stack *receiving_stack, t_stack *giving_stack)
 {
 	t_node	*new_receiveng_stack_head;
 

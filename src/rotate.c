@@ -6,13 +6,13 @@
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 19:59:13 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:42:46 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack *stack)
+static void	rotate(t_stack *stack)
 {
 	t_node	*new_last;
 
