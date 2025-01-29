@@ -6,7 +6,7 @@
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/28 19:08:03 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:27:55 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		sort_three(&stack_a);
 	else if (stack_a.len > 3)
 		sort_stack(&stack_a, &stack_b);
-	print_stack(&stack_a);
-	print_stack(&stack_b);
+//	print_stack(&stack_a);
+//	print_stack(&stack_b);
 	free_stack(&stack_a);
 }

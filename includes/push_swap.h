@@ -6,7 +6,7 @@
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:09:00 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/28 18:21:42 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:41:48 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	size_t				len;
+	size_t			len;
 	t_node			*head;
 	t_node			*last;
 }					t_stack;
 
 typedef struct s_cost
 {
-	int				ra;
-	int				rra;
-	int				rb;
-	int				rrb;
-	int				total;
+	size_t			ra;
+	size_t			rra;
+	size_t			rb;
+	size_t			rrb;
+	size_t			total;
 }					t_cost;
 
 void				swap_a(t_stack *a);
@@ -74,13 +74,14 @@ int					parsing(t_stack *stack_a, int argc, char **argv);
 int					cheapest_num(t_node *stack);
 int					highest_num(t_node *stack);
 void				cheap_to_top(t_stack *stack);
-
+t_cost				find_best_move(t_node *stack_a, t_node *stack_b);
+void				best_move_application(t_stack *stack_a, t_stack *stack_b);
 void				sort_two(t_stack *stack);
 void				sort_two_b(t_stack *stack);
 void				sort_three(t_stack *stack);
 void				sort_stack(t_stack *stack_a, t_stack *stack_b);
 
-int					cost_to_top(t_node *stack, int value);
+size_t				cost_to_top(t_node *stack, int value);
 int					search_target(t_node *a, int b_value);
 int					search_target_to_b(t_node *stack_b, int b_value);
 void				print_stack(t_stack *stack);

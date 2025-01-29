@@ -6,13 +6,13 @@
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/28 18:48:38 by sberete          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:41:17 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*new_node(int nbr)
+static t_node	*new_node(int nbr)
 {
 	t_node	*node;
 
@@ -25,7 +25,7 @@ t_node	*new_node(int nbr)
 	return (node);
 }
 
-bool	push_back(t_stack *stack, int nbr)
+static bool	push_back(t_stack *stack, int nbr)
 {
 	t_node	*node;
 
@@ -44,11 +44,10 @@ bool	push_back(t_stack *stack, int nbr)
 		stack->last = node;
 	}
 	stack->len++;
-	stack->last->next = NULL;
 	return (true);
 }
 
-int	parse_two_arg(t_stack *stack_a, char **argv)
+static int	parse_two_arg(t_stack *stack_a, char **argv)
 {
 	char	**split_result;
 	int		i;
@@ -73,7 +72,7 @@ int	parse_two_arg(t_stack *stack_a, char **argv)
 	return (0);
 }
 
-int	parse_mult_args(t_stack *stack_a, char **argv)
+static int	parse_mult_args(t_stack *stack_a, char **argv)
 {
 	int	i;
 	int	nbr;
