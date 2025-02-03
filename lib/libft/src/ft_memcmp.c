@@ -35,6 +35,6 @@ int	main(void)
 	char	s1[20] = "Je suis a";
 	char	s2[20] = "Je suis b";
 
-	printf("%d", ft_memcmp(s1, s2, 0));
+	printf(""%d", ft_memcmp(s1, s2, 0));
 }
 */

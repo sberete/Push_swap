@@ -31,18 +31,18 @@ void	rotate(t_node **ap)
 void	rotate_a(t_node **a)
 {
 	rotate(a);
-	ft_printf("ra\n");
+	printf("ra\n");
 }
 
 void	rotate_b(t_node **b)
 {
 	rotate(b);
-	ft_printf("rb\n");
+	printf("rb\n");
 }
 
 void	rotate_rr(t_node **a, t_node **b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	printf("rr\n");
 }

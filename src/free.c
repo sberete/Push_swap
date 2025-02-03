@@ -16,7 +16,6 @@ void	free_stack(t_stack *stack)
 {
 	t_node	*tmp;
 	t_node	*next;
-
 	tmp = stack->head;
 	while (tmp)
 	{
@@ -24,4 +23,7 @@ void	free_stack(t_stack *stack)
 		free(tmp);
 		tmp = next;
 	}
+	stack->head = NULL;
+	stack->last = NULL;
+	stack->len = 0;
 }

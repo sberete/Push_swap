@@ -12,30 +12,42 @@
 
 #include "push_swap.h"
 
-static void	push(t_stack *receiving_stack, t_stack *giving_stack)
+static bool	push(t_stack *receiving_stack, t_stack *giving_stack)
 {
-	t_node	*new_receiveng_stack_head;
+		t_node	*new_head;
 
-	if (giving_stack->len == 0)
-		return ;
-	new_receiveng_stack_head = giving_stack->head;
-	giving_stack->head = giving_stack->head->next;
-	new_receiveng_stack_head->next = receiving_stack->head;
-	receiving_stack->head = new_receiveng_stack_head;
-	if (receiving_stack->len == 0)
-		receiving_stack->last = new_receiveng_stack_head;
-	receiving_stack->len++;
+	if (giving_stack->len == 0 || receiving_stack == giving_stack)
+		return (false);
+	new_head = giving_stack -> head -> next;
+	giving_stack -> head -> next = receiving_stack -> head;
+	receiving_stack -> head = giving_stack -> head;
+	giving_stack -> head = new_head;
 	giving_stack->len--;
+	receiving_stack->len++;
+	if (receiving_stack->len == 1)
+		receiving_stack->last = receiving_stack->head;
+	else if (giving_stack->len == 0)
+		giving_stack->last = NULL;
+	return (true);
 }
 
+
+/*
+1 2
+7 8
+
+7 1
+  2
+  8  
+*/
 void	push_a(t_stack *a, t_stack *b)
 {
-	push(a, b);
-	ft_printf("pa\n");
+	if (push(a, b))
+		printf("pa\n");
 }
 
 void	push_b(t_stack *a, t_stack *b)
 {
-	push(b, a);
-	ft_printf("pb\n");
+	if (push(b, a))
+		printf("pb\n");
 }

@@ -45,6 +45,6 @@ int main()
 	char str[] = "je suis celui la";
 	char st[] = "celui";
 	char *x = ft_strnstr(str, st, 25);
-	printf("La chaine trouvé est : %s", x);
+	printf(""La chaine trouvé est : %s", x);
 }
 */

@@ -44,6 +44,6 @@ int	main(void)
 
 	c = 'i';
 	x = ft_strrchr(str, c);
-	printf("%s", x);
+	printf(""%s", x);
 }
 */

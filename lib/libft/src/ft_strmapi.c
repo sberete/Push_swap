@@ -43,6 +43,6 @@ int main()
 	char str[] = "bcd";
 	char *x;
 	x = ft_strmapi(str, *f);
-	printf("%s\n", x);
+	printf(""%s\n", x);
 }
 */

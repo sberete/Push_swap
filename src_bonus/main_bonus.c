@@ -16,10 +16,10 @@ void	print_stack(t_node *stack)
 {
 	while (stack)
 	{
-		printf("%d -> ", stack->value);
+		printf(""%d -> ", stack->value);
 		stack = stack->next;
 	}
-	printf("NULL\n");
+	printf(""NULL\n");
 }
 
 void	free_stack(t_node *a)

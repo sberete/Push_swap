@@ -26,18 +26,18 @@ void	swap(t_node *ap)
 void	swap_a(t_node **a)
 {
 	swap(*a);
-	ft_printf("sa\n");
+	printf("sa\n");
 }
 
 void	swap_b(t_node **b)
 {
 	swap(*b);
-	ft_printf("sb\n");
+	printf("sb\n");
 }
 
 void	swap_ss(t_node **a, t_node **b)
 {
 	swap(*a);
 	swap(*b);
-	ft_printf("ss\n");
+	printf("ss\n");
 }

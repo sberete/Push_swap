@@ -54,30 +54,46 @@ void	sort_three(t_stack *stack)
 	sort_two(stack);
 }
 
-int	cheapest_num(t_node *stack)
+int	cheapest_num(t_node *node)
 {
 	int	cheap;
+	int	pos;
+	int	min_pos;
 
-	cheap = stack->value;
-	while (stack)
+	cheap = node->value;
+	pos = 0;
+	min_pos = 0;
+	while (node)
 	{
-		if (cheap > stack->value)
-			cheap = stack->value;
-		stack = stack->next;
+		if (cheap > node->value)
+		{
+			cheap = node->value;
+			min_pos = pos;
+		}
+		node = node->next;
+		++pos;
 	}
-	return (cheap);
+	return (min_pos);
 }
 
-int	highest_num(t_node *stack)
+int	highest_num(t_node *node)
 {
 	int	high;
+	int	pos;
+	int	max_pos;
 
-	high = stack->value;
-	while (stack)
+	high = node->value;
+	pos = 0;
+	max_pos = 0;
+	while (node)
 	{
-		if (high < stack->value)
-			high = stack->value;
-		stack = stack->next;
+		if (high < node->value)
+		{
+			high = node->value;
+			max_pos = pos;
+		}
+		node = node->next;
+		++pos;
 	}
-	return (high);
+	return (max_pos);
 }

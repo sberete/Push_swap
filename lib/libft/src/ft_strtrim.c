@@ -34,6 +34,6 @@ int	main(void)
 {
 	char	str[] = "****!*test********";
 
-	printf("%s", ft_strtrim(str, "!*"));
+	printf(""%s", ft_strtrim(str, "!*"));
 }
 */

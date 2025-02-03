@@ -41,6 +41,8 @@ typedef struct s_cost
 	size_t			rra;
 	size_t			rb;
 	size_t			rrb;
+	size_t			rr;
+	size_t			rrr;
 	size_t			total;
 }					t_cost;
 
@@ -55,12 +57,6 @@ void				reverse_rotate_a(t_stack *a);
 void				reverse_rotate_b(t_stack *b);
 void				reverse_rotate_rrr(t_stack *a, t_stack *b);
 
-void				rrr(t_stack *stack_a, t_stack *stack_b, t_cost *best_cost);
-void				rr(t_stack *stack_a, t_stack *stack_b, t_cost *best_cost);
-void				rra(t_stack *stack_a, t_cost *best_cost);
-void				ra(t_stack *stack_a, t_cost *best_cost);
-void				rrb(t_stack *stack_b, t_cost *best_cost);
-void				rb(t_stack *stack_b, t_cost *best_cost);
 
 int					error(void);
 
@@ -74,8 +70,6 @@ int					parsing(t_stack *stack_a, int argc, char **argv);
 int					cheapest_num(t_node *stack);
 int					highest_num(t_node *stack);
 void				cheap_to_top(t_stack *stack);
-t_cost				find_best_move(t_node *stack_a, t_node *stack_b);
-void				best_move_application(t_stack *stack_a, t_stack *stack_b);
 void				sort_two(t_stack *stack);
 void				sort_two_b(t_stack *stack);
 void				sort_three(t_stack *stack);

@@ -84,7 +84,7 @@ int	main(void)
 	moussa = ft_split(str, ' ');
 	while (moussa[i] != NULL)
 	{
-		printf("%s\n", moussa[i]);
+		printf(""%s\n", moussa[i]);
 		i++;
 	}
 	free(moussa);

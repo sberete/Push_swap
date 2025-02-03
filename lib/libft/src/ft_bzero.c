@@ -23,6 +23,6 @@ int main()
 	char buffer[10];
 
 	ft_bzero(buffer, 10);
-	printf("%s", buffer);
+	printf(""%s", buffer);
 }
 */

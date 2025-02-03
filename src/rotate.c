@@ -12,34 +12,38 @@
 
 #include "push_swap.h"
 
-static void	rotate(t_stack *stack)
+static bool rotate(t_stack *stack)
 {
-	t_node	*new_last;
+	t_node	*head;
+	t_node	*tail;
 
 	if (stack->len < 2)
-		return ;
-	new_last = stack->head;
-	stack->head = stack->head->next;
-	new_last->next = NULL;
-	stack->last->next = new_last;
-	stack->last = new_last;
+		return (false);
+	head = stack->head;
+	tail = stack->last;
+	head->prev = tail;
+	stack->head = head->next;
+	stack->head->prev = NULL;
+	head->next = NULL;
+	tail->next = head;
+	stack->last = head;
+	return (true);
 }
 
 void	rotate_a(t_stack *a)
 {
-	rotate(a);
-	ft_printf("ra\n");
+	if (rotate(a))
+		ft_printf("ra\n");
 }
 
 void	rotate_b(t_stack *b)
 {
-	rotate(b);
-	ft_printf("rb\n");
+	if (rotate(b))
+		ft_printf("rb\n");
 }
 
 void	rotate_rr(t_stack *a, t_stack *b)
 {
-	rotate(a);
-	rotate(b);
-	ft_printf("rr\n");
+	if (rotate(a) && rotate(b))
+		ft_printf("rr\n");
 }

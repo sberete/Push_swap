@@ -67,6 +67,6 @@ int	main(void)
 	char	*x;
 
 	x = ft_itoa(0);
-	printf("%s", x);
+	printf(""%s", x);
 }
 */

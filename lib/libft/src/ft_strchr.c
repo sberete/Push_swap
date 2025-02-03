@@ -35,6 +35,6 @@ int	main(void)
 
 	c = 'i';
 	x = ft_strchr(str, c);
-	printf("%s", x);
+	printf(""%s", x);
 }
 */

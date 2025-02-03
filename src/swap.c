@@ -12,32 +12,42 @@
 
 #include "push_swap.h"
 
-static void	swap(t_stack *ap)
+static bool swap(t_stack *stack)
 {
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*second;
 
-	if (!ap)
-		return ;
-	tmp = ap->head;
-	ap->head = ap->head->next;
-	ap->head->next = tmp;
+	if (stack->len < 2)
+		return (false);
+	first = stack->head;
+	second = first->next;
+	stack->head = second;
+	first->next = second->next;
+	if (stack->len > 2)
+		second->next->prev = first;
+	second->next = first;
+	first->prev = second;
+	second->prev = NULL;
+	if (stack->len == 2)
+		stack->last = first;
+	return (true);
 }
+
 
 void	swap_a(t_stack *a)
 {
-	swap(a);
-	ft_printf("sa\n");
+	if (swap(a))
+		printf("sa\n");
 }
 
 void	swap_b(t_stack *b)
 {
-	swap(b);
-	ft_printf("sb\n");
+	if (swap(b))
+		printf("sb\n");
 }
 
 void	swap_ss(t_stack *a, t_stack *b)
 {
-	swap(a);
-	swap(b);
-	ft_printf("ss\n");
+	if (swap(a) && swap(b))
+		printf("ss\n");
 }

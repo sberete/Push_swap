@@ -33,6 +33,6 @@ int main()
 	char dest[6];
 
 	ft_memcpy(dest, src, 15);
-	printf("%s", dest);
+	printf(""%s", dest);
 }
 */

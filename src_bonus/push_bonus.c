@@ -22,7 +22,7 @@ void	push_a(t_node **a, t_node **b)
 	*b = (*b)->next;
 	tmp->next = *a;
 	*a = tmp;
-	ft_printf("pa\n");
+	printf("pa\n");
 }
 
 void	push_b(t_node **a, t_node **b)
@@ -35,5 +35,5 @@ void	push_b(t_node **a, t_node **b)
 	*a = (*a)->next;
 	tmp->next = *b;
 	*b = tmp;
-	ft_printf("pb\n");
+	printf("pb\n");
 }

@@ -36,6 +36,6 @@ int	main(void)
 	char	src[20] = "Middfdhdo";
 
 	ft_strlcat(dst, src, 7);
-	printf("%s\n", dst);
+	printf(""%s\n", dst);
 }
 */

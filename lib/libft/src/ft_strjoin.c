@@ -39,6 +39,6 @@ int main()
 	char s2[] = " a l'ecole";
 
 	char *x = ft_strjoin(s1, s2);
-	printf("%s", x);
+	printf(""%s", x);
 }
 */
