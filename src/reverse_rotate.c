@@ -25,24 +25,24 @@ static bool	reverse_rotate(t_stack *stack)
 	stack->head->prev = new_head;
 	stack->head = new_head;
 	stack->head->prev = NULL;
-	return (true);
+	return(true);
 }
 
 
 void	reverse_rotate_a(t_stack *a)
 {
 	if(reverse_rotate(a))
-		printf("rra\n");
+		ft_printf("rra\n");
 }
 
 void	reverse_rotate_b(t_stack *b)
 {
 	if(reverse_rotate(b))
-		printf("rrb\n");
+		ft_printf("rrb\n");
 }
 
 void	reverse_rotate_rrr(t_stack *a, t_stack *b)
 {
 	if (reverse_rotate(a) && reverse_rotate(b))
-		printf("rrr\n");
+		ft_printf("rrr\n");
 }

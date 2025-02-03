@@ -16,8 +16,8 @@ static bool	push(t_stack *receiving_stack, t_stack *giving_stack)
 {
 	t_node	*node_to_move;
 
-	if (!giving_stack || giving_stack->len == 0)
-		return ;
+	if (giving_stack->len == 0)
+		return (false);
 	node_to_move = giving_stack->head;
 	giving_stack->head = node_to_move->next;
 	if (giving_stack->head)
@@ -32,18 +32,27 @@ static bool	push(t_stack *receiving_stack, t_stack *giving_stack)
 		receiving_stack->last = node_to_move;
 	receiving_stack->head = node_to_move;
 	receiving_stack->len++;
+	giving_stack->len--;
 	return (true);
 }
 
 
+/*
+1 2
+7 8
+
+7 1
+  2
+  8  
+*/
 void	push_a(t_stack *a, t_stack *b)
 {
 	if (push(a, b))
-		printf("pa\n");
+		ft_printf("pa\n");
 }
 
 void	push_b(t_stack *a, t_stack *b)
 {
 	if (push(b, a))
-		printf("pb\n");
+		ft_printf("pb\n");
 }

@@ -91,23 +91,24 @@ void	execute(t_cost best_cost, t_stack *stack_a, t_stack *stack_b)
 t_cost get_cost(t_stack *stack_a, t_stack *stack_b, size_t pos_a, size_t pos_b)
 {
 	t_cost cost;
+	size_t len_a;
+	size_t len_b;
 	ft_memset(&cost, 0, sizeof(t_cost));
 	if (pos_a > 0 && pos_b > 0 && pos_a >= (stack_a->len / 2) && pos_b >= (stack_b->len / 2))
 	{
-
-		pos_a = stack_a->len - pos_a;
-		pos_b = stack_b->len - pos_b;
-		if (pos_a > pos_b)
+		len_a = stack_a->len - pos_a;
+		len_b = stack_b->len - pos_b;
+		if (len_a < len_b)
 		{
-			cost.rrr = pos_b;
-			pos_a = pos_a - pos_b;
-			pos_b = 0;
+			cost.rrr = len_a;
+			pos_b += len_a;
+			pos_a = 0;
 		}
 		else
 		{
-			cost.rrr = pos_a;
-			pos_b = pos_b - pos_a;
-			pos_a = 0;
+			cost.rrr = len_b;
+			pos_a += len_b;
+			pos_b = 0;
 		}
 
 	}
@@ -164,77 +165,6 @@ void	best_move_application_to_b(t_stack *stack_a, t_stack *stack_b)
 	push_b(stack_a, stack_b);
 }
 
-static size_t	min(size_t *a, size_t *b)
-{
-	size_t	tmp_a;
-	size_t	tmp_b;
-
-	tmp_a = *a;
-	tmp_b = *b;
-	if (tmp_a < tmp_b)
-	{
-		*b = tmp_b - tmp_a;
-		*a = 0;
-		return (tmp_a);
-	}
-	*b = 0;
-	*a = tmp_a - tmp_b;
-	return (tmp_b);
-}
-
-static size_t	max(size_t *a, size_t *b, size_t stack_a_size,
-	size_t stack_b_size)
-{
-	size_t	nb_operations;
-	size_t	remaining_a;
-	size_t	remaining_b;
-
-	remaining_a = stack_a_size - *a;
-	remaining_b = stack_b_size - *b;
-	if (remaining_a < remaining_b)
-	{
-		nb_operations = remaining_a;
-		*a = 0;
-		*b += nb_operations;
-	}
-	else
-	{
-		nb_operations = remaining_b;
-		*b = 0;
-		*a += nb_operations;
-	}
-	return (nb_operations);
-}
-
-t_cost	calculate_cost_operations(t_stack *stack_a, t_stack *stack_b, size_t position_in_a, size_t position_in_b)
-{
-	t_cost	operations;
-	size_t				half_stack_a_size;
-	size_t				half_stack_b_size;
-
-	ft_memset(&operations, 0, sizeof(t_cost));
-	half_stack_a_size = stack_a->len / 2;
-	half_stack_b_size = stack_b->len / 2;
-	if (position_in_a <= half_stack_a_size && position_in_b <= half_stack_b_size
-		&& position_in_a > 0 && position_in_b > 0)
-		operations.rr = (int)min(&position_in_a, &position_in_b);
-	else if (position_in_a >= half_stack_a_size
-		&& position_in_b >= half_stack_b_size)
-		operations.rrr = (int)max(&position_in_a, &position_in_b,
-				stack_a->len, stack_b->len);
-	if (position_in_a <= half_stack_a_size)
-		operations.ra = (int)position_in_a;
-	else if (position_in_a > 0)
-		operations.rra = (int)stack_a->len - (int)position_in_a;
-	if (position_in_b <= half_stack_b_size)
-		operations.rb = (int)position_in_b;
-	else if (position_in_b > 0)
-		operations.rrb = (int)stack_b->len - (int)position_in_b;
-	operations.total = operations.ra + operations.rb + operations.rra
-		+ operations.rrb + operations.rr + operations.rrr;
-	return (operations);
-}
-
 void	best_move_application_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current;
@@ -249,7 +179,7 @@ void	best_move_application_to_a(t_stack *stack_a, t_stack *stack_b)
 	while (current)
 	{
 		pos_a = search_target_to_a(stack_a->head, current->value);
-		check = calculate_cost_operations(stack_a, stack_b, (size_t)pos_a, (size_t)pos_b);
+		check = get_cost(stack_a, stack_b, (size_t)pos_a, (size_t)pos_b);
 		if (best_cost.total > check.total)
 			best_cost = check;
 		if (best_cost.total == 0)
@@ -286,3 +216,4 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 	cheap_to_top(stack_a);
 }
 
+// 4676

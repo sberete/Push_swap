@@ -17,7 +17,7 @@ static bool rotate(t_stack *stack)
 	t_node *new_last;
 
 	if (stack->len < 2)
-		return ;
+		return (false);
 	new_last = stack->head;
 	stack->head = new_last->next;
 	stack->head->prev = NULL;
@@ -25,6 +25,7 @@ static bool rotate(t_stack *stack)
 	new_last->prev = stack->last;
 	new_last->next = NULL;
 	stack->last = new_last;
+	return (true);
 }
 
 

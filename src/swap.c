@@ -37,17 +37,17 @@ static bool swap(t_stack *stack)
 void	swap_a(t_stack *a)
 {
 	if (swap(a))
-		printf("sa\n");
+		ft_printf("sa\n");
 }
 
 void	swap_b(t_stack *b)
 {
 	if (swap(b))
-		printf("sb\n");
+		ft_printf("sb\n");
 }
 
 void	swap_ss(t_stack *a, t_stack *b)
 {
 	if (swap(a) && swap(b))
-		printf("ss\n");
+		ft_printf("ss\n");
 }
