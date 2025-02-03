@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   turk_algo_operation_suite.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 10:42:47 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/30 19:41:46 by sxriimu          ###   ########.fr       */
+/*   Created: 2025/01/28 13:22:04 by sberete           #+#    #+#             */
+/*   Updated: 2025/01/30 19:36:42 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+void	rrb(t_stack *stack_b, t_cost *best_cost)
 {
-	t_node	*tmp;
-	t_node	*next;
-	tmp = stack->head;
-	while (tmp)
+	best_cost->rrb = stack_b->len - best_cost->rb;
+	best_cost->rb = 0;
+	while (best_cost->rrb > 0)
 	{
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
+		reverse_rotate_b(stack_b);
+		best_cost->rrb--;
 	}
-	stack->head = NULL;
-	stack->last = NULL;
-	stack->len = 0;
+}
+
+void	rb(t_stack *stack_b, t_cost *best_cost)
+{
+	while (best_cost->rb > 0)
+	{
+		rotate_b(stack_b);
+		best_cost->rb--;
+	}
 }

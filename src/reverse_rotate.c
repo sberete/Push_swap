@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/28 19:42:41 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:17:36 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 static bool	reverse_rotate(t_stack *stack)
 {
-	t_node	*current;
-	t_node	*tail;
+	t_node	*new_head;
 
 	if (stack->len < 2)
 		return (false);
-	current = stack->head;
-	tail = stack->last;
-	while (current->next != tail)
-		current = current->next;
-	stack->last->next = stack->head;
-	stack->head = stack->last;
-	current->next = NULL;
-	stack->last = current;
+	new_head = stack->last;
+	stack->last = new_head->prev;
+	stack->last->next = NULL;
+	new_head->next = stack->head;
+	stack->head->prev = new_head;
+	stack->head = new_head;
+	stack->head->prev = NULL;
 	return (true);
 }
+
 
 void	reverse_rotate_a(t_stack *a)
 {
