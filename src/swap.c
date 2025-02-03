@@ -3,25 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/28 19:42:58 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:17:53 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack *ap)
+static void	swap(t_stack *stack)
 {
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*second;
 
-	if (!ap)
+	if (stack->len < 2)
 		return ;
-	tmp = ap->head;
-	ap->head = ap->head->next;
-	ap->head->next = tmp;
+	first = stack->head;
+	second = stack->head->next;
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->prev = NULL;
+	second->next = first;
+	first->prev = second;
+	stack->head = second;
+	if (stack->len == 2)
+		stack->last = first;
 }
+
 
 void	swap_a(t_stack *a)
 {

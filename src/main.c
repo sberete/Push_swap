@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/29 19:27:55 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:16:59 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ void print_stack(t_stack *stack)
     ft_printf("NULL\n");
 }
 
+void print_rev(t_stack *stack)
+{
+    t_node *tmp;
+
+    tmp = stack->last;
+    while (tmp)
+    {
+        ft_printf("%d -> ", tmp->value);
+        tmp = tmp->prev;
+    }
+    ft_printf("NULL\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
@@ -37,14 +50,20 @@ int	main(int argc, char **argv)
 		free_stack(&stack_a);
 		return (error());
 	}
+	push_a(&stack_a, &stack_b);
+	push_a(&stack_a, &stack_b);
+	push_a(&stack_a, &stack_b);
+	push_a(&stack_a, &stack_b);
+
 	print_stack(&stack_a);
-	if (stack_a.len == 2)
-		sort_two(&stack_a);
-	else if (stack_a.len == 3)
-		sort_three(&stack_a);
-	else if (stack_a.len > 3)
-		sort_stack(&stack_a, &stack_b);
-//	print_stack(&stack_a);
-//	print_stack(&stack_b);
+	print_rev(&stack_a);
+// 	if (stack_a.len == 2)
+// 		sort_two(&stack_a);
+// 	else if (stack_a.len == 3)
+// 		sort_three(&stack_a);
+// 	else if (stack_a.len > 3)
+// 		sort_stack(&stack_a, &stack_b);
+// //	print_stack(&stack_a);
+// //	print_stack(&stack_b);
 	free_stack(&stack_a);
 }

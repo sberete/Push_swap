@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/28 19:42:46 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:17:44 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ static void	rotate(t_stack *stack)
 	if (stack->len < 2)
 		return ;
 	new_last = stack->head;
-	stack->head = stack->head->next;
-	new_last->next = NULL;
+	stack->head = new_last->next;
+	stack->head->prev = NULL;
 	stack->last->next = new_last;
+	new_last->prev = stack->last;
+	new_last->next = NULL;
 	stack->last = new_last;
 }
+
 
 void	rotate_a(t_stack *a)
 {
