@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/05 22:45:01 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/02/05 23:01:24 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		sort_three(&stack_a);
 	else if (stack_a.len > 3)
 		sort_stack(&stack_a, &stack_b);
-	if (stack_is_not_sorted(stack_a.head) == true)
+	if (stack_is_not_sorted(&stack_a) == true)
 		write(1, "KO\n", 3);
 	else
 		write(1, "OK\n", 3);

@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/05 21:26:42 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/02/05 23:00:59 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ static int	parse_two_arg(t_stack *stack_a, char **argv)
 	int		i;
 	int		nbr;
 
+	if (!argv[1] || argv[1][0] == '\0')
+		return (1);
 	split_result = ft_split(argv[1], ' ');
-	if (split_result == NULL)
+	if (split_result == NULL || split_result[0] == NULL)
 		return (1);
 	i = 0;
 	while (split_result[i])
