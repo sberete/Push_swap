@@ -3,37 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:47:18 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/05 21:31:41 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	push_a(t_node **a, t_node **b)
+static bool	push(t_stack *receiving_stack, t_stack *giving_stack)
 {
-	t_node	*tmp;
+	t_node	*node_to_move;
 
-	if (!b || !(*b))
-		return ;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = *a;
-	*a = tmp;
-	printf("pa\n");
+	if (giving_stack->len == 0)
+		return (false);
+	node_to_move = giving_stack->head;
+	giving_stack->head = node_to_move->next;
+	if (giving_stack->head)
+		giving_stack->head->prev = NULL;
+	else
+		giving_stack->last = NULL;
+	node_to_move->next = receiving_stack->head;
+	node_to_move->prev = NULL;
+	if (receiving_stack->head)
+		receiving_stack->head->prev = node_to_move;
+	else
+		receiving_stack->last = node_to_move;
+	receiving_stack->head = node_to_move;
+	receiving_stack->len++;
+	giving_stack->len--;
+	return (true);
 }
 
-void	push_b(t_node **a, t_node **b)
+void	push_a(t_stack *a, t_stack *b)
 {
-	t_node	*tmp;
+	if (push(a, b))
+		ft_printf("pa\n");
+}
 
-	if (!a || !(*a))
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = *b;
-	*b = tmp;
-	printf("pb\n");
+void	push_b(t_stack *a, t_stack *b)
+{
+	if (push(b, a))
+		ft_printf("pb\n");
 }

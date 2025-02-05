@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_algo_utils_suite.c                            :+:      :+:    :+:   */
+/*   turk_algo_sort_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:26:24 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/29 15:02:49 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/05 21:59:00 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	sort_two(t_stack *stack)
 {
@@ -21,19 +21,6 @@ void	sort_two(t_stack *stack)
 	second = stack->head->next->value;
 	if (first > second)
 		swap_a(stack);
-	else
-		return ;
-}
-
-void	sort_two_b(t_stack *stack)
-{
-	int	first;
-	int	second;
-
-	first = stack->head->value;
-	second = stack->head->next->value;
-	if (first < second)
-		swap_b(stack);
 	else
 		return ;
 }
@@ -54,46 +41,27 @@ void	sort_three(t_stack *stack)
 	sort_two(stack);
 }
 
-int	cheapest_num(t_node *node)
+void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	int	cheap;
-	int	pos;
-	int	min_pos;
+	int	len;
 
-	cheap = node->value;
-	pos = 0;
-	min_pos = 0;
-	while (node)
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	len = stack_a->len;
+	while (len > 3)
 	{
-		if (cheap > node->value)
-		{
-			cheap = node->value;
-			min_pos = pos;
-		}
-		node = node->next;
-		++pos;
+		best_move_application_to_b(stack_a, stack_b);
+		--len;
 	}
-	return (min_pos);
-}
-
-int	highest_num(t_node *node)
-{
-	int	high;
-	int	pos;
-	int	max_pos;
-
-	high = node->value;
-	pos = 0;
-	max_pos = 0;
-	while (node)
+	if (len == 2)
+		sort_two(stack_a);
+	else
+		sort_three(stack_a);
+	len = stack_b->len;
+	while (len > 0)
 	{
-		if (high < node->value)
-		{
-			high = node->value;
-			max_pos = pos;
-		}
-		node = node->next;
-		++pos;
+		best_move_application_to_a(stack_a, stack_b);
+		--len;
 	}
-	return (max_pos);
+	cheap_to_top(stack_a);
 }

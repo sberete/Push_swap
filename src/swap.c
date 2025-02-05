@@ -6,13 +6,13 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/03 15:17:53 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/02/04 19:03:10 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static bool swap(t_stack *stack)
+static bool	swap(t_stack *stack)
 {
 	t_node	*first;
 	t_node	*second;
@@ -32,7 +32,6 @@ static bool swap(t_stack *stack)
 		stack->last = first;
 	return (true);
 }
-
 
 void	swap_a(t_stack *a)
 {

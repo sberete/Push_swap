@@ -6,15 +6,15 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/03 15:17:44 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/02/04 19:02:51 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static bool rotate(t_stack *stack)
+static bool	rotate(t_stack *stack)
 {
-	t_node *new_last;
+	t_node	*new_last;
 
 	if (stack->len < 2)
 		return (false);
@@ -27,7 +27,6 @@ static bool rotate(t_stack *stack)
 	stack->last = new_last;
 	return (true);
 }
-
 
 void	rotate_a(t_stack *a)
 {

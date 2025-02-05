@@ -3,41 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   swap_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:47:30 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/05 21:31:52 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	swap(t_node *ap)
+static bool	swap(t_stack *stack)
 {
-	int	tmp;
+	t_node	*first;
+	t_node	*second;
 
-	if (!ap || !(ap->next))
-		return ;
-	tmp = ap->value;
-	ap->value = ap->next->value;
-	ap->next->value = tmp;
+	if (stack->len < 2)
+		return (false);
+	first = stack->head;
+	second = stack->head->next;
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->prev = NULL;
+	second->next = first;
+	first->prev = second;
+	stack->head = second;
+	if (stack->len == 2)
+		stack->last = first;
+	return (true);
 }
 
-void	swap_a(t_node **a)
+void	swap_a(t_stack *a)
 {
-	swap(*a);
-	printf("sa\n");
+	if (swap(a))
+		ft_printf("sa\n");
 }
 
-void	swap_b(t_node **b)
+void	swap_b(t_stack *b)
 {
-	swap(*b);
-	printf("sb\n");
+	if (swap(b))
+		ft_printf("sb\n");
 }
 
-void	swap_ss(t_node **a, t_node **b)
+void	swap_ss(t_stack *a, t_stack *b)
 {
-	swap(*a);
-	swap(*b);
-	printf("ss\n");
+	if (swap(a) && swap(b))
+		ft_printf("ss\n");
 }

@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/03 15:15:37 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/02/04 19:02:58 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,6 @@ static bool	push(t_stack *receiving_stack, t_stack *giving_stack)
 	return (true);
 }
 
-
-/*
-1 2
-7 8
-
-7 1
-  2
-  8  
-*/
 void	push_a(t_stack *a, t_stack *b)
 {
 	if (push(a, b))

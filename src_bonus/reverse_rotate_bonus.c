@@ -3,49 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/15 20:47:23 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/05 21:29:31 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	reverse_rotate(t_node **ap)
+static bool	reverse_rotate(t_stack *stack)
 {
-	t_node	*tmp;
-	t_node	*i;
+	t_node	*new_head;
 
-	if (!ap || !(*ap) || !((*ap)->next))
-		return ;
-	tmp = *ap;
-	i = NULL;
-	while (tmp->next)
-	{
-		i = tmp;
-		tmp = tmp->next;
-	}
-	i->next = NULL;
-	tmp->next = *ap;
-	*ap = tmp;
+	if (stack->len < 2)
+		return (false);
+	new_head = stack->last;
+	stack->last = new_head->prev;
+	stack->last->next = NULL;
+	new_head->next = stack->head;
+	stack->head->prev = new_head;
+	stack->head = new_head;
+	stack->head->prev = NULL;
+	return (true);
 }
 
-void	reverse_rotate_a(t_node **a)
+void	reverse_rotate_a(t_stack *a)
 {
-	reverse_rotate(a);
-	printf("rra\n");
+	if (reverse_rotate(a))
+		ft_printf("rra\n");
 }
 
-void	reverse_rotate_b(t_node **b)
+void	reverse_rotate_b(t_stack *b)
 {
-	reverse_rotate(b);
-	printf("rrb\n");
+	if (reverse_rotate(b))
+		ft_printf("rrb\n");
 }
 
-void	reverse_rotate_rrr(t_node **a, t_node **b)
+void	reverse_rotate_rrr(t_stack *a, t_stack *b)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
-	printf("rrr\n");
+	if (reverse_rotate(a) && reverse_rotate(b))
+		ft_printf("rrr\n");
 }

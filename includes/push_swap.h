@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:09:00 by sberete           #+#    #+#             */
-/*   Updated: 2025/01/29 17:41:48 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/05 22:30:18 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void				reverse_rotate_a(t_stack *a);
 void				reverse_rotate_b(t_stack *b);
 void				reverse_rotate_rrr(t_stack *a, t_stack *b);
 
-
 int					error(void);
 
 void				free_stack(t_stack *stack);
@@ -67,16 +66,17 @@ bool				check_doublon(t_stack *stack);
 
 int					parsing(t_stack *stack_a, int argc, char **argv);
 
-int					cheapest_num(t_node *stack);
-int					highest_num(t_node *stack);
 void				cheap_to_top(t_stack *stack);
+int					search_target_to_a(t_node *node_a, int b_value);
+int					search_target_to_b(t_node *node_b, int a_value);
+t_cost				get_cost(t_stack *stack_a, t_stack *stack_b, size_t pos_a,
+						size_t pos_b);
+void				best_move_application_to_b(t_stack *stack_a,
+						t_stack *stack_b);
+void				best_move_application_to_a(t_stack *stack_a,
+						t_stack *stack_b);
 void				sort_two(t_stack *stack);
-void				sort_two_b(t_stack *stack);
 void				sort_three(t_stack *stack);
 void				sort_stack(t_stack *stack_a, t_stack *stack_b);
 
-size_t				cost_to_top(t_node *stack, int value);
-int					search_target(t_node *a, int b_value);
-int					search_target_to_b(t_node *stack_b, int b_value);
-void				print_stack(t_stack *stack);
 #endif
