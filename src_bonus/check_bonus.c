@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:07:38 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/05 22:30:28 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/02/05 22:46:05 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ bool	check_doublon(t_stack *stack)
 	return (false);
 }
 
-bool	stack_is_not_sorted(t_node *ap)
+bool	stack_is_not_sorted(t_stack *stack)
 {
 	t_node	*current;
 	t_node	*check;
 
-	current = ap;
+	current = stack->head;
 	while (current)
 	{
 		check = current->next;

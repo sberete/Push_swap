@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:20:54 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/05 21:27:51 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/02/05 22:48:25 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,20 @@ void				rotate_rr(t_stack *a, t_stack *b);
 void				reverse_rotate_a(t_stack *a);
 void				reverse_rotate_b(t_stack *b);
 void				reverse_rotate_rrr(t_stack *a, t_stack *b);
-
 int					error(void);
-int					ok(void);
-int					ko(void);
 void				free_stack(t_stack *stack);
-
 bool				valid_number(char *nbr);
 bool				check_doublon(t_stack *stack);
-bool				stack_is_not_sorted(t_node *ap);
-
+bool				stack_is_not_sorted(t_stack *stack);
 int					parsing(t_stack *stack_a, int argc, char **argv);
-
 void				cheap_to_top(t_stack *stack);
 int					search_target_to_a(t_node *node_a, int b_value);
 int					search_target_to_b(t_node *node_b, int a_value);
 t_cost				get_cost(t_stack *stack_a, t_stack *stack_b, size_t pos_a,
 						size_t pos_b);
-void				best_move_application_to_b(t_stack *stack_a,
-						t_stack *stack_b);
 void				best_move_application_to_a(t_stack *stack_a,
+						t_stack *stack_b);
+void				best_move_application_to_b(t_stack *stack_a,
 						t_stack *stack_b);
 void				sort_two(t_stack *stack);
 void				sort_three(t_stack *stack);
