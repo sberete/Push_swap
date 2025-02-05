@@ -22,7 +22,7 @@ OBJS_BONUS = $(addprefix $(OBJ_DIR_BONUS)/,$(addsuffix .o,$(notdir $(basename $(
 
 DEPENDS = $(OBJS:.o=.d)
 
-NAME = push_swapa
+NAME = push_swap
 NAME_BONUS = push_swap
 
 -include $(DEPEND)
